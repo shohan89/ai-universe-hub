@@ -8,7 +8,6 @@ const loadAIData = async () => {
 const displayAiTools = tools => {
     const toolsContainer = document.getElementById('tools-card-container');
     tools.forEach((tool)=>{
-        console.log("🚀 ~ tools.forEach ~ tool:", tool);
         const toolDiv = document.createElement('div');
         toolDiv.classList = 'card bg-base-100 shadow-sm';
         toolDiv.innerHTML = `
