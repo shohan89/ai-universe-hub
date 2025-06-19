@@ -44,7 +44,7 @@ const handleShowToolDetails = async (id) => {
   showToolDetails(tool);
 }
 const showToolDetails = tool =>{
-  console.log(tool);
+  // console.log(tool);
   const toolName = document.getElementById('show-detail-tool-name');
   const showDetailContainer = document.getElementById('show-detail-container');
   showDetailContainer.innerHTML = `
