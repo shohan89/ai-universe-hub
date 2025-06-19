@@ -26,7 +26,7 @@ const displayAiTools = tools => {
               are title and actions parts
             </p>
             <div class="card-actions justify-start">
-              <button class="btn btn-primary">Show Details</button>
+              <button onclick="my_modal_3.showModal();handleShowToolDetails('${tool.id}')" class="btn btn-primary">Show Details</button>
             </div>
           </div>
         `;
@@ -35,6 +35,28 @@ const displayAiTools = tools => {
     // data loaded, hide loading spinner
     toggleSpinner(false);
     
+}
+// Show modal on button click and get the data of the clicked tool
+const handleShowToolDetails = async (id) => {
+  const res = await fetch(`https://openapi.programming-hero.com/api/ai/tool/${id}`);
+  const data = await res.json();
+  const tool = data.data;
+  showToolDetails(tool);
+}
+const showToolDetails = tool =>{
+  console.log(tool);
+  const toolName = document.getElementById('show-detail-tool-name');
+  const showDetailContainer = document.getElementById('show-detail-container');
+  showDetailContainer.innerHTML = `
+  <div class='bg-red-100 rounded-sm p-4'>
+    <h3 id="show-detail-tool-name" class="text-lg font-bold">${tool.tool_name}</h3>
+    <p>${tool.description}</p>
+  </div>
+  <div>
+    <img src="${tool?.image_link[0]}" alt=${tool.tool_name} />
+  </div>
+  `;
+  // toolName.innerText = tool.tool_name;
 }
 // Show & hide loading spinner before data is loaded and hide after data is loaded
 const toggleSpinner = isLoading =>{
