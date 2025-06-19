@@ -10,7 +10,7 @@ const displayAiTools = tools => {
     tools.forEach((tool)=>{
         console.log("🚀 ~ tools.forEach ~ tool:", tool);
         const toolDiv = document.createElement('div');
-        toolDiv.classList = 'card bg-base-100 w-96 shadow-sm';
+        toolDiv.classList = 'card bg-base-100 shadow-sm';
         toolDiv.innerHTML = `
         <figure>
             <img
