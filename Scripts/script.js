@@ -7,6 +7,8 @@ const loadAIData = async () => {
 // display the data on the ui
 const displayAiTools = tools => {
     const toolsContainer = document.getElementById('tools-card-container');
+    // data still loading here...
+    toggleSpinner(true);
     tools.forEach((tool)=>{
         const toolDiv = document.createElement('div');
         toolDiv.classList = 'card bg-base-100 shadow-sm';
@@ -23,14 +25,26 @@ const displayAiTools = tools => {
               A card component has a figure, a body part, and inside body there
               are title and actions parts
             </p>
-            <div class="card-actions justify-end">
-              <button class="btn btn-primary">Buy Now</button>
+            <div class="card-actions justify-start">
+              <button class="btn btn-primary">Show Details</button>
             </div>
           </div>
         `;
         toolsContainer.appendChild(toolDiv);
     })
+    // data loaded, hide loading spinner
+    toggleSpinner(false);
     
+}
+// Show & hide loading spinner before data is loaded and hide after data is loaded
+const toggleSpinner = isLoading =>{
+  const spinner = document.getElementById('loading-spinner');
+  if(isLoading){
+    spinner.classList.remove('hidden');
+  }
+  else{
+    spinner.classList.add('hidden');
+  }
 }
 loadAIData();
 
